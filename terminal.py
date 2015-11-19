@@ -1,7 +1,7 @@
 '''
 Released under The MIT License.
 Copyright (c) 2015 Rene Tanczos
-https://github.com/gravmatt/py-console
+https://github.com/gravmatt/pyTerminal
 '''
 import sys
 
