@@ -1,8 +1,14 @@
-'''
-Released under The MIT License.
-Copyright (c) 2015 Rene Tanczos
-https://github.com/gravmatt/pyTerminal
-'''
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+Copyright (c) 2015-2016, René Tanczos <gravmatt@gmail.com> (Twitter @gravmatt)
+The MIT License (MIT)
+
+pyTerminal helps positioning the cursor and styling output inside the terminal.
+
+Project on github https://github.com/gravmatt/random-cat
+"""
+
 import sys
 
 off='\033[0m\033[27m'
@@ -17,7 +23,7 @@ black='\033[30m'
 red='\033[31m'
 green='\033[32m'
 yellow='\033[33m'
-blue='\033[34m'
+magenta='\033[34m'
 magenta='\033[35m'
 cyan='\033[36m'
 white='\033[37m'
