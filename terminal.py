@@ -80,4 +80,4 @@ def write(text, *style):
         send(text)
 
 def writeLine(text, *style):
-    write(text+'\n', *style)
+    write(str(text)+'\n', *style)
