@@ -10,6 +10,7 @@ Project on github https://github.com/gravmatt/pyterm
 """
 
 import sys
+from subprocess import Popen, PIPE
 
 off='\033[0m\033[27m'
 bold='\033[1m'
@@ -36,8 +37,6 @@ bgblue='\033[44m'
 bgmagenta='\033[45m'
 bgcyan='\033[46m'
 bgwhite='\033[47m'
-
-size = (0, 0)
 
 def send(cmd):
     sys.stdout.write(cmd)
@@ -95,11 +94,12 @@ def right(text):
 
 def getSize():
     p = Popen('stty size', shell=True, stdout=PIPE, stderr=PIPE)
-    out = p.stdout.read().strip().split(' ')
-    return int(out[0]), int(out[1])
-
-def refreshSize():
-    size = getSize()
+    err = p.stderr.read().strip()
+    if(err):
+        return (0, 0)
+    else:
+        out = p.stdout.read().strip().split(' ')
+        return int(out[0]), int(out[1])
 
 def format(text, *style):
     if(style):
