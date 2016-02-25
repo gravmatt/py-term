@@ -9,6 +9,10 @@ pyterm helps positioning the cursor and styling output inside the terminal.
 Project on github https://github.com/gravmatt/pyterm
 """
 
+__author__ = 'Rene Tanczos'
+__version__ = '0.2'
+__license__ = 'MIT'
+
 import sys
 from subprocess import Popen, PIPE
 
@@ -87,10 +91,10 @@ def writeLine(text='', *style):
     write(str(text)+'\n', *style)
 
 def center(text):
-    return ' '*(Terminal.size[1]/2 - len(text)/2) + text
+    return ' '*(getSize()[1]/2 - len(text)/2) + text
 
 def right(text):
-    return ' '*(Terminal.size[1] - len(text)) + text
+    return ' '*(getSize()[1] - len(text)) + text
 
 def getSize():
     p = Popen('stty size', shell=True, stdout=PIPE, stderr=PIPE)

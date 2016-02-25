@@ -1,27 +1,40 @@
-# pyTerminal
+# py-term
 Python module to style terminal output, moving and positioning the cursor.
 
-## Install
+## Installation
+
+Install through **pip**.
+
 ```
-cd <path to your project>
-git clone https://github.com/gravmatt/pyTerminal.git
+$ pip install py-term
+```
+
+or get from source
+
+```
+$ git clone https://github.com/gravmatt/py-term.git
+$ cd py-term
+$ python setup.py install
 ```
 
 ## Import module
+
 Import the module into your python project.
+
 ```
-import pyTerminal
+import term
 ```
 
 ## Usage
+
 ```
-pyTerminal.write('Hello')
-pyTerminal.write(',Python!')
+term.write('Hello, ')
+term.write('Python!')
 
 > Hello, Python!
 
-pyTerminal.writeLine('Hello')
-pyTerminal.writeLine('Python!')
+term.writeLine('Hello')
+term.writeLine('Python!')
 
 > Hello
 > Python!
@@ -30,114 +43,157 @@ pyTerminal.writeLine('Python!')
 ## Style output
 
 The first argument is the text output and all following arguments are for styling.
+
 ```
-pyTerminal.writeLine(text, *style)
+term.writeLine(text, *style)
+
+Or
+
+text = term.format(text, *style)
+term.writeLine(text)
 ```
+
 ### Usage
+
 ```
-pyTerminal.writeLine('Hello, Pyhton!')
+term.writeLine('Hello, Pyhton!')
 
-pyTerminal.writeLine('This text line will be green', pyTerminal.green)
+term.writeLine('This text line will be green', term.green)
 
-pyTerminal.writeLine('Reverse the green color', pyTerminal.green, pyTerminal.reverse)
+term.writeLine('Reverse the green color', term.green, term.reverse)
+```
+
+Or
+
+```
+ouput = term.format('Hello, ', term.green) + term.format('Python!', term.blue, term.bold)
+
+term.writeLine(output)
+
+term.write(term.format('All in one line', term.reverse))
+```
+
+#### Text align
+
+**Center align**
+
+```
+# term.center(text)
+
+term.writeLine(term.center('Super Python!'))
+```
+
+**Right align**
+
+```
+# term.right(text)
+
+term.writeLine(term.right('Rene Tanczos (@gravmatt)'))
 ```
 
 ##### Style attributes
 
 | Code                  | Description                          |
 | :-------------------- | :----------------------------------- |
-| pyTerminal.off        | All attributes off                   |
-| pyTerminal.bold       | Bold                                 |
-| pyTerminal.dim        | Dim                                  |
-| pyTerminal.underscore | Underscore (monochrome display only) |
-| pyTerminal.blink      | Blink                                |
-| pyTerminal.reverse    | Reverse                              |
-| pyTerminal.hide       | Hide                                 |
+| term.off        | All attributes off                   |
+| term.bold       | Bold                                 |
+| term.dim        | Dim                                  |
+| term.underscore | Underscore (monochrome display only) |
+| term.blink      | Blink                                |
+| term.reverse    | Reverse                              |
+| term.hide       | Hide                                 |
 
 ##### Text color
 
 | Code               | Color       |
 | :----------------- | :---------- |
-| pyTerminal.black   | Black       |
-| pyTerminal.red     | Red         |
-| pyTerminal.Green   | Green       |
-| pyTerminal.yellow  | Yellow      |
-| pyTerminal.blue    | Blue        |
-| pyTerminal.magenta | Magenta     |
-| pyTerminal.cyan    | Cyan        |
-| pyTerminal.white   | White       |
+| term.black   | Black       |
+| term.red     | Red         |
+| term.Green   | Green       |
+| term.yellow  | Yellow      |
+| term.blue    | Blue        |
+| term.magenta | Magenta     |
+| term.cyan    | Cyan        |
+| term.white   | White       |
 
 ##### Background color
 
 | Code                 | Color       |
 | :------------------- | :---------- |
-| pyTerminal.bgblack   | Black       |
-| pyTerminal.bgred     | Red         |
-| pyTerminal.bggreen   | Green       |
-| pyTerminal.bgyellow  | Yellow      |
-| pyTerminal.bgblue    | Blue        |
-| pyTerminal.bgMagenta | Magenta     |
-| pyTerminal.bgcyan    | Cyan        |
-| pyTerminal.bgwhite   | White       |
-
+| term.bgblack   | Black       |
+| term.bgred     | Red         |
+| term.bggreen   | Green       |
+| term.bgyellow  | Yellow      |
+| term.bgblue    | Blue        |
+| term.bgMagenta | Magenta     |
+| term.bgcyan    | Cyan        |
+| term.bgwhite   | White       |
 
 ## Cursor position
 
 Move the cursor to a specific position.
 ```
-pyTerminal.pos(line, column)
+term.pos(line, column)
 
-pyTerminal.pos(2, 15)
+term.pos(2, 15)
 ```
 
 Move the cursor to the home position (1, 1).
+
 ```
-pyTerminal.homePos()
+term.homePos()
 ```
 
 Moves the current cursor position up, down, left or right by the specified value.
+
 ```
-pyTerminal.up(value=1)
-pyTerminal.down(value=1)
-pyTerminal.left(value=1)
-pyTerminal.right(value=1)
+term.up(value=1)
+term.down(value=1)
+term.left(value=1)
+term.right(value=1)
 ```
 
 Saves the current cursor position.
+
 ```
-pyTerminal.saveCursor()
+term.saveCursor()
 ```
 
 Restore the previously stored cursor position.
+
 ```
-pyTerminal.restoreCursor()
+term.restoreCursor()
 ```
 
 Clear the terminal screen.
+
 ```
-pyTerminal.clear()
+term.clear()
 ```
 
 Clear the entire line on the current cursor position.
+
 ```
-pyTerminal.clearLine()
+term.clearLine()
 ```
 
 Clear line from the current cursor position to the end.
+
 ```
-pyTerminal.clearLineFromPos()
+term.clearLineFromPos()
 ```
 
 Clear line from begin to current cursor position.
+
 ```
-pyTerminal.clearLineToPos()
+term.clearLineToPos()
 ```
 
 ## Licence
 
 The MIT License (MIT)
 
-Copyright (c) 2015 René Tanczos
+Copyright (c) 2015-2016 René Tanczos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
