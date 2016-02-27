@@ -138,6 +138,14 @@ term.pos(line, column)
 term.pos(2, 15)
 ```
 
+Get the size of the terminal (lines and columns)
+
+```
+(30, 100) = term.getSize()
+
+# (lines, colums) = term.getSize()
+```
+
 Move the cursor to the home position (1, 1).
 
 ```

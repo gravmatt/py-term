@@ -3,5 +3,4 @@ test.py
 build/
 dist/
 py_term.egg-info
-README.rst
 py-term-0.1/
