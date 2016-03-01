@@ -111,7 +111,7 @@ term.writeLine(term.right('Rene Tanczos (@gravmatt)'))
 | :----------------- | :---------- |
 | term.black   | Black       |
 | term.red     | Red         |
-| term.Green   | Green       |
+| term.green   | Green       |
 | term.yellow  | Yellow      |
 | term.blue    | Blue        |
 | term.magenta | Magenta     |
