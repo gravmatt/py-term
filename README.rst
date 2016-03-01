@@ -6,6 +6,11 @@ cursor.
 
 **Python 2 and 3 compatible**
 
+.. figure:: https://raw.githubusercontent.com/gravmatt/py-term/master/pyterm.jpg
+   :alt: See? amazing!
+
+   alt text
+
 Installation
 ------------
 
