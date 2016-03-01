@@ -1,6 +1,8 @@
 # py-term
 Python module to style terminal output, moving and positioning the cursor.
 
+**Python 2 and 3 compatible**
+
 ## Installation
 
 Install through **pip**.
@@ -128,6 +130,23 @@ term.writeLine(term.right('Rene Tanczos (@gravmatt)'))
 | term.bgMagenta | Magenta     |
 | term.bgcyan    | Cyan        |
 | term.bgwhite   | White       |
+
+## Remove style attributes
+
+Removes style characters.
+
+(Good to call before you count a string)
+```
+term.strip(formatted_text)
+
+hello = term.red + 'hello, world' + term.off
+print hello
+# '\x1b[31mhello, world\x1b[0m\x1b[27m'
+
+print term.strip(hello)
+# hello, world
+```
+
 
 ## Cursor position
 

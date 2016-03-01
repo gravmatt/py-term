@@ -10,10 +10,10 @@ Project on github https://github.com/gravmatt/pyterm
 """
 
 __author__ = 'Rene Tanczos'
-__version__ = '0.2'
+__version__ = '0.3'
 __license__ = 'MIT'
 
-import sys
+import sys, re
 from subprocess import Popen, PIPE
 
 off='\033[0m\033[27m'
@@ -90,11 +90,14 @@ def write(text='', *style):
 def writeLine(text='', *style):
     write(str(text)+'\n', *style)
 
+def strip(text):
+    return re.sub('\x1b\[[0-9]{1,2}m', '', text)
+
 def center(text):
-    return ' '*(getSize()[1]/2 - len(text)/2) + text
+    return ' '*(int(getSize()[1]/2) - int(len(strip(text))/2)) + text
 
 def right(text):
-    return ' '*(getSize()[1] - len(text)) + text
+    return ' '*(getSize()[1] - len(strip(text))) + text
 
 def getSize():
     p = Popen('stty size', shell=True, stdout=PIPE, stderr=PIPE)
@@ -102,7 +105,7 @@ def getSize():
     if(err):
         return (0, 0)
     else:
-        out = p.stdout.read().strip().split(' ')
+        out = p.stdout.read().decode('ascii').strip().split(' ')
         return int(out[0]), int(out[1])
 
 def format(text, *style):
