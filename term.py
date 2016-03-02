@@ -10,7 +10,7 @@ Project on github https://github.com/gravmatt/pyterm
 """
 
 __author__ = 'Rene Tanczos'
-__version__ = '0.3'
+__version__ = '0.4'
 __license__ = 'MIT'
 
 import sys, re
