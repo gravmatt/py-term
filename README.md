@@ -3,7 +3,7 @@ Python module to style terminal output, moving and positioning the cursor.
 
 **Python 2 and 3 compatible**
 
-![alt text](https://raw.githubusercontent.com/gravmatt/py-term/master/pyterm.jpg "See? amazing!")
+![alt text](pyterm.jpg "See? amazing!")
 
 ## Installation
 
