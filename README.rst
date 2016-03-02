@@ -68,7 +68,7 @@ Usage
 
 ::
 
-    term.writeLine('Hello, Pyhton!')
+    term.writeLine('Hello, Python!')
 
     term.writeLine('This text line will be green', term.green)
 
@@ -187,6 +187,27 @@ Removes style characters.
 
     print term.strip(hello)
     # hello, world
+
+Highlighting text
+-----------------
+
+Simple highlighting of unformatted text strings
+
+::
+
+    def callback(matching_text):
+      return term.blue + matching_text + term.off
+
+    output, match_count, array_of_positions = term.highlight(regex_pattern, text, callback)
+
+Return a tuple.
+
+output (index 0) = formatted text output
+
+match\_count (index 1) = match count of the pattern
+
+array\_of\_positions (index 2) = array of tuples with start and stop
+points of the matches [(4, 6), (9, 11), ..]
 
 Cursor position
 ---------------

@@ -113,3 +113,14 @@ def format(text, *style):
         return '%s%s%s' % (''.join(style), text, off)
     else:
         return text
+
+def highlight(pattern, text, func):
+    output = ''
+    idx = 0
+    matches = [(m.start(), m.end()) for m in re.finditer(pattern, text)]
+    for p in matches:
+        output += text[idx:p[0]]
+        output += func(text[p[0]:p[1]])
+        idx = p[1]
+    output += text[idx:]
+    return (output, len(matches), matches)
