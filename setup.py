@@ -39,6 +39,6 @@ setup(name='py-term',
                    'Operating System :: MacOS :: MacOS X',
                    'Operating System :: POSIX',
                    'Topic :: Terminals',
-                    'Environment :: Console'
+                   'Environment :: Console'
                    ],
       )
