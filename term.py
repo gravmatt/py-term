@@ -15,6 +15,7 @@ __license__ = 'MIT'
 
 import sys
 import re
+import os
 from subprocess import Popen, PIPE
 
 
@@ -121,13 +122,20 @@ def right(text):
 
 
 def getSize():
-    p = Popen('stty size', shell=True, stdout=PIPE, stderr=PIPE)
-    err = p.stderr.read().strip()
-    if(err):
-        return (0, 0)
+    import platform
+    os_sys = platform.system()
+    if(os_sys in ['Linux', 'Darwin'] or os_sys.startswith('CYGWIN')):
+        def __get_unix_terminal_size(fd):
+            import fcntl, termios, struct
+            return struct.unpack('hh', fcntl.ioctl(fd, termios.TIOCGWINSZ, 'rene'))
+        cr = __get_unix_terminal_size(0) or __get_unix_terminal_size(1) or __get_unix_terminal_size(2)
+        if(not cr):
+            fd = os.open(os.ctermid(), os.O_RDONLY)
+            cr = __get_unix_terminal_size(fd)
+            os.close(fd)
+        return cr
     else:
-        out = p.stdout.read().decode('ascii').strip().split(' ')
-        return int(out[0]), int(out[1])
+        raise Exception('Operation System not supported')
 
 
 def format(text, *style):
