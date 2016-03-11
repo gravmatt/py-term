@@ -6,6 +6,11 @@ cursor.
 
 **Python 2 and 3 compatible**
 
+.. figure:: pyterm.jpg
+   :alt: See? amazing!
+
+   alt text
+
 Installation
 ------------
 
@@ -208,6 +213,28 @@ match\_count (index 1) = match count of the pattern
 
 array\_of\_positions (index 2) = array of tuples with start and stop
 points of the matches [(4, 6), (9, 11), ..]
+
+Set title
+---------
+
+::
+
+    term.setTitle('Hello Terminal')
+
+    # or clear it
+
+    term.clearTitle()
+
+Set tab name
+------------
+
+::
+
+    term.setTab('Hello Tab')
+
+    # or clear it
+
+    term.clearTab()
 
 Cursor position
 ---------------

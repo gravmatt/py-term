@@ -167,6 +167,26 @@ match_count (index 1) = match count of the pattern
 
 array_of_positions (index 2) = array of tuples with start and stop points of the matches [(4, 6), (9, 11), ..]
 
+## Set title
+
+```
+term.setTitle('Hello Terminal')
+
+# or clear it
+
+term.clearTitle()
+```
+
+## Set tab name
+
+```
+term.setTab('Hello Tab')
+
+# or clear it
+
+term.clearTab()
+```
+
 ## Cursor position
 
 Move the cursor to a specific position.

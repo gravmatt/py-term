@@ -6,11 +6,11 @@ The MIT License (MIT)
 
 pyterm helps positioning the cursor and styling output inside the terminal.
 
-Project on github https://github.com/gravmatt/pyterm
+Project on github https://github.com/gravmatt/py-term
 """
 
 __author__ = 'Rene Tanczos'
-__version__ = '0.5'
+__version__ = '0.6'
 __license__ = 'MIT'
 
 import sys
@@ -109,6 +109,22 @@ def writeLine(text='', *style):
     write(str(text) + '\n', *style)
 
 
+def setTitle(name):
+    send('\033]2;%s\007' % name)
+
+
+def clearTitle():
+    setTitle('')
+
+
+def setTab(name):
+    send('\033]1;%s\007' % name)
+
+
+def clearTab():
+    setTab('')
+
+
 def strip(text):
     return re.sub('\x1b\[[0-9]{1,2}m', '', text)
 
@@ -125,17 +141,20 @@ def getSize():
     import platform
     os_sys = platform.system()
     if(os_sys in ['Linux', 'Darwin'] or os_sys.startswith('CYGWIN')):
-        def __get_unix_terminal_size(fd):
-            import fcntl, termios, struct
-            return struct.unpack('hh', fcntl.ioctl(fd, termios.TIOCGWINSZ, 'rene'))
-        cr = __get_unix_terminal_size(0) or __get_unix_terminal_size(1) or __get_unix_terminal_size(2)
-        if(not cr):
-            fd = os.open(os.ctermid(), os.O_RDONLY)
-            cr = __get_unix_terminal_size(fd)
-            os.close(fd)
-        return cr
+        try:
+            def __get_unix_terminal_size(fd):
+                import fcntl, termios, struct
+                return struct.unpack('hh', fcntl.ioctl(fd, termios.TIOCGWINSZ, 'rene'))
+            cr = __get_unix_terminal_size(0) or __get_unix_terminal_size(1) or __get_unix_terminal_size(2)
+            if(not cr):
+                fd = os.open(os.ctermid(), os.O_RDONLY)
+                cr = __get_unix_terminal_size(fd)
+                os.close(fd)
+            return cr
+        except:
+            pass
     else:
-        raise Exception('Operation System not supported')
+        raise Exception('operating system not supported')
 
 
 def format(text, *style):
