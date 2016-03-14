@@ -83,7 +83,7 @@ Or
 
 ::
 
-    ouput = term.format('Hello, ', term.green) + term.format('Python!', term.blue, term.bold)
+    output = term.format('Hello, ', term.green) + term.format('Python!', term.blue, term.bold)
 
     term.writeLine(output)
 
