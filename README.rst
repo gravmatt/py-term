@@ -6,11 +6,6 @@ cursor.
 
 **Python 2 and 3 compatible**
 
-.. figure:: pyterm.jpg
-   :alt: See? amazing!
-
-   alt text
-
 Installation
 ------------
 
@@ -96,17 +91,19 @@ Text align
 
 ::
 
-    # term.center(text)
+    # term.textCenter(text)
 
-    term.writeLine(term.center('Super Python!'))
+    term.writeLine(term.textCenter('Super Python!'))
 
 **Right align**
 
 ::
 
-    # term.right(text)
+    # term.textRight(text)
 
-    term.writeLine(term.right('Rene Tanczos (@gravmatt)'))
+    term.writeLine(term.textRight('Rene Tanczos (@gravmatt)'))
+
+    ( Function term.right() to align text is depricated because of naming conflicts! )
 
 Style attributes
 ''''''''''''''''

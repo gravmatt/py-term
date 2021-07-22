@@ -10,7 +10,7 @@ Project on github https://github.com/gravmatt/py-term
 """
 
 __author__ = 'Rene Tanczos'
-__version__ = '0.6'
+__version__ = '0.7'
 __license__ = 'MIT'
 
 import sys
@@ -129,11 +129,19 @@ def strip(text):
     return re.sub('\x1b\[[0-9]{1,2}m', '', text)
 
 
-def center(text):
+def textCenter(text):
     return ' ' * (int(getSize()[1] / 2) - int(len(strip(text)) / 2)) + text
 
 
-def right(text):
+def center(text):
+    '''
+    DEPRICATED: Use textCenter() instead!
+    Will be removed in later verions!
+    '''
+    textCenter(text)
+
+
+def textRight(text):
     return ' ' * (getSize()[1] - len(strip(text))) + text
 
 

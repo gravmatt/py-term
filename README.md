@@ -82,17 +82,19 @@ term.write(term.format('All in one line', term.reverse))
 **Center align**
 
 ```
-# term.center(text)
+# term.textCenter(text)
 
-term.writeLine(term.center('Super Python!'))
+term.writeLine(term.textCenter('Super Python!'))
 ```
 
 **Right align**
 
 ```
-# term.right(text)
+# term.textRight(text)
 
-term.writeLine(term.right('Rene Tanczos (@gravmatt)'))
+term.writeLine(term.textRight('Rene Tanczos (@gravmatt)'))
+
+( Function term.right() to align text is depricated because of naming conflicts! )
 ```
 
 ##### Style attributes
