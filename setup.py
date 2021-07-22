@@ -11,13 +11,14 @@ if sys.version_info < (2, 6):
 
 import term
 
-with open('README.rst', 'r') as f:
+with open('README.md', 'r') as f:
     longDesc = f.read()
 
 setup(name='py-term',
       version=term.__version__,
       description='Python module to style terminal output, moving and positioning the cursor.',
       long_description=longDesc,
+      long_description_content_type='text/markdown',
       author='Rene Tanczos',
       author_email='gravmatt@gmail.com',
       url='https://github.com/gravmatt/py-term',
