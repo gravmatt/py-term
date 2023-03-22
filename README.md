@@ -1,44 +1,44 @@
-# py-term
-Python module to style terminal output, moving and positioning the cursor.
+# pyterm
 
-**Python 2 and 3 compatible**
-
-![alt text](pyterm.jpg "See? amazing!")
+Python 3 package to easily handle style terminal output, moving and positioning the cursor and some other features.
+This project is heavily based on [gravmatt/py-term](https://github.com/gravmatt/py-term]github.com) project.
 
 ## Installation
 
 Install through **pip**.
 
-```
-$ pip install py-term
+```shell
+$ pip3 install git+https://github.com/havocesp/pyterm
 ```
 
 or get from source
 
-```
-$ git clone https://github.com/gravmatt/py-term.git
-$ cd py-term
-$ python setup.py install
+```shell
+$ git clone https://github.com/havocesp/pyterm
+$ cd pyterm
+$ python3 setup.py install
 ```
 
 ## Import module
 
 Import the module into your python project.
 
-```
-import term
+```python3
+from pyterm import Term as Tm
 ```
 
 ## Usage
 
-```
-term.write('Hello, ')
-term.write('Python!')
+```python
+from pyterm import Term as Tm
+
+Tm.write('Hello, ')
+Tm.write('Python!')
 
 > Hello, Python!
 
-term.writeLine('Hello')
-term.writeLine('Python!')
+Tm.write_line('Hello')
+Tm.write_line('Python!')
 
 > Hello
 > Python!
@@ -48,23 +48,25 @@ term.writeLine('Python!')
 
 The first argument is the text output and all following arguments are for styling.
 
-```
-term.writeLine(text, *style)
+```python3
+from pyterm import Term as Tm
 
-Or
+Tm.write_line('text', Tm.BOLD)
 
-text = term.format(text, *style)
-term.writeLine(text)
+text = Tm.style('text', Tm.DIM)
+Tm.write_line(text)
 ```
 
 ### Usage
 
-```
-term.writeLine('Hello, Python!')
+```python
+from pyterm import Term as Tm
 
-term.writeLine('This text line will be green', term.green)
+Tm.write_line('Hello, Python!')
 
-term.writeLine('Reverse the green color', term.green, term.reverse)
+Tm.write_line('This text line will be green', Tm.GREEN)
+
+Tm.write_line('Reverse the green color', Tm.GREEN, Tm.REVERSE)
 ```
 
 Or
@@ -72,7 +74,7 @@ Or
 ```
 output = term.format('Hello, ', term.green) + term.format('Python!', term.blue, term.bold)
 
-term.writeLine(output)
+term.write_line(output)
 
 term.write(term.format('All in one line', term.reverse))
 ```
@@ -84,15 +86,15 @@ term.write(term.format('All in one line', term.reverse))
 ```
 # term.textCenter(text)
 
-term.writeLine(term.textCenter('Super Python!'))
+term.write_line(term.textCenter('Super Python!'))
 ```
 
 **Right align**
 
 ```
-# term.textRight(text)
+# term.text_right(text)
 
-term.writeLine(term.textRight('Rene Tanczos (@gravmatt)'))
+term.write_line(term.text_right('Rene Tanczos (@gravmatt)'))
 
 ( Function term.right() to align text is depricated because of naming conflicts! )
 ```
@@ -172,21 +174,21 @@ array_of_positions (index 2) = array of tuples with start and stop points of the
 ## Set title
 
 ```
-term.setTitle('Hello Terminal')
+term.set_title('Hello Terminal')
 
 # or clear it
 
-term.clearTitle()
+term.clear_title()
 ```
 
 ## Set tab name
 
 ```
-term.setTab('Hello Tab')
+term.set_tab('Hello Tab')
 
 # or clear it
 
-term.clearTab()
+term.clear_tab()
 ```
 
 ## Cursor position
@@ -201,9 +203,9 @@ term.pos(2, 15)
 Get the size of the terminal (lines and columns)
 
 ```
-(30, 100) = term.getSize()
+(30, 100) = term.get_size()
 
-# (lines, colums) = term.getSize()
+# (lines, colums) = term.get_size()
 ```
 
 Move the cursor to the home position (1, 1).
@@ -224,13 +226,13 @@ term.right(value=1)
 Saves the current cursor position.
 
 ```
-term.saveCursor()
+term.save_cursor()
 ```
 
 Restore the previously stored cursor position.
 
 ```
-term.restoreCursor()
+term.restore_cursor()
 ```
 
 Clear the terminal screen.
@@ -242,19 +244,19 @@ term.clear()
 Clear the entire line on the current cursor position.
 
 ```
-term.clearLine()
+term.clear_line()
 ```
 
 Clear line from the current cursor position to the end.
 
 ```
-term.clearLineFromPos()
+term.clear_line_from_pos()
 ```
 
 Clear line from begin to current cursor position.
 
 ```
-term.clearLineToPos()
+term.clear_line_to_pos()
 ```
 
 ## Licence
