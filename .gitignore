@@ -1,6 +1,8 @@
 *.pyc
 test.py
-build/
-dist/
-py_term.egg-info
-py-term-0.1/
+build/**
+dist/**
+pyterm.egg-info/**
+pyterm-0.1/
+.idea/**
+/Code_restructured_and_many_other_changes_.patch
